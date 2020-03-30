@@ -12,7 +12,7 @@
                     if (isset($_GET['message'])) {
                         $message = $_GET['message'];
                     }
-                    include('loginForm.phtml');
+                    include('users/loginForm.phtml');
                     break;
 
                 case 'login':
@@ -24,7 +24,7 @@
                     break;
 
                 case 'registerForm':
-                    include('userForm.phtml');
+                    include('users/userForm.phtml');
                     break;
 
                 case 'register':
@@ -41,7 +41,7 @@
                     } else {
                         $users = getUsers();
                     }
-                    include 'userList.phtml';
+                    include 'users/userList.phtml';
                     break;
                 case 'userCreate':
                     $valid = validateUserForm($_POST);
@@ -58,7 +58,7 @@
                     }
                     break;
                 case 'userCreateForm':
-                    include('userForm.phtml');
+                    include('users/userForm.phtml');
                     break;
                 case 'userUpdate':
 
@@ -66,7 +66,7 @@
                     break;
                 case 'userUpdateForm':
                     $user = getUserByEmail($_GET['email']);
-                    include('userForm.phtml');
+                    include('users/userForm.phtml');
 
                     break;
                 case 'userLogout' :
@@ -91,7 +91,7 @@
                         //break;
                 case 'articleCreateForm' :
                     $categories= getCategory();
-                    include('articleForm.phtml');
+                    include('artilces/articleForm.phtml');
 
                     break;
                 case 'articleCreate' :
@@ -107,7 +107,7 @@
                     $categories= array();
                     $categories= getCategory();
                     $article = getArticleByTitle($_GET['title']);
-                    include 'updateArticleForm.phtml';
+                    include 'articles/updateArticleForm.phtml';
                     break;
                 case 'articleUpdate' :
                     if (!updateArticle($_POST)) {
@@ -126,7 +126,7 @@
                         $articles = getArticles();
                        // $article = getArticleById($id);
                     }
-                    include 'articleList.phtml';
+                    include 'articles/articleList.phtml';
                     break;
                 case 'articleDelete' :
                     $articles = array();
@@ -141,7 +141,7 @@
                 case 'categoryCreateForm' :
                     $categories = array();
                     $categories = getCategory();
-                    include 'categoryCreate.phtml';
+                    include 'categories/categoryCreate.phtml';
                     break;
                 case 'categorySave' :
                     if (!saveCategoryForm($_POST)) {
@@ -150,7 +150,7 @@
                         echo "Kategorija je uspesno snimljena u bazu";
                         $categories = array();
                         $categories = getCategory();
-                        include 'categoryCreate.phtml';
+                        include 'categories/categoryCreate.phtml';
                     }
                     break;
                 case 'categoryDelete' :
