@@ -118,7 +118,8 @@ function login($email, $password)
 {
     $user = getUserByEmail($email);
     if (!$user) {
-        return false;
+        throw new Exception('False');
+        //return false;
     }
     if ($user->password === createPasswordHash($password)) {
         $_SESSION['isLoggedIn'] = true;
@@ -126,6 +127,12 @@ function login($email, $password)
     }
     return false;
 }
+try {
+    echo login($email,$password);
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+
 
 function validateLoginForm(array $params)
 {
