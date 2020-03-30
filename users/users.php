@@ -86,15 +86,21 @@ function registerUser($params)
     file_put_contents('storage.json', $data);
 }
 
-
-function isLoggedIn()
+try {
+    if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
+        return true;
+    } 
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
+/* function isLoggedIn()
 {
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
         return true;
     }
 
     return false;
-}
+} */
 
 
 function getUserByEmail($email)
