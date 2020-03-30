@@ -2,13 +2,15 @@
 //echo md5('12345678');
 //die();
      $message = '';
+    
+
      include('route.php');
      include('functions.php');
      include('users/users.php');
      include('articles/articles.php');
      include('categories/categories.php');
-     $config = include ('config.php') ;
-     
+    
+     $config = include('config.php');
      bootstrap();
      include ('header.phtml') ;
 

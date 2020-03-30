@@ -86,21 +86,22 @@ function registerUser($params)
     file_put_contents('storage.json', $data);
 }
 
-try {
+ /* try {
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
         return true;
     } 
 } catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
-/* function isLoggedIn()
+}  */
+
+  function isLoggedIn()
 {
     if (isset($_SESSION['isLoggedIn']) && $_SESSION['isLoggedIn'] === true) {
         return true;
     }
 
     return false;
-} */
+}   
 
 
 function getUserByEmail($email)
@@ -114,12 +115,14 @@ function getUserByEmail($email)
     return false;
 }
 
+
+ 
 function login($email, $password)
 {
     $user = getUserByEmail($email);
     if (!$user) {
-        throw new Exception('False');
-        //return false;
+        throw new Exception('Wrong Credentials');
+       
     }
     if ($user->password === createPasswordHash($password)) {
         $_SESSION['isLoggedIn'] = true;
@@ -128,10 +131,11 @@ function login($email, $password)
     return false;
 }
 try {
-    echo login($email,$password);
-} catch (Exception $e) {
+    echo login($email, $password);
+    } 
+ catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
-}
+}  
 
 
 function validateLoginForm(array $params)
