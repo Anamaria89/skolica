@@ -121,7 +121,7 @@ function login($email, $password)
 {
     $user = getUserByEmail($email);
     if (!$user) {
-        throw new Exception('Wrong Credentials');
+        return false;
        
     }
     if ($user->password === createPasswordHash($password)) {
@@ -132,6 +132,7 @@ function login($email, $password)
 }
 try {
     echo login($email, $password);
+   
     } 
  catch (Exception $e) {
     echo 'Caught exception: ',  $e->getMessage(), "\n";

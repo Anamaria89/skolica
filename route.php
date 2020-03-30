@@ -18,9 +18,12 @@
                 case 'login':
                     if (validateLoginForm($_POST) and login($_POST['email'], $_POST['password'])) {
                         redirect($config['baseUrl'], '&message=loggedIn');
+                       
                         exit();
                     }
                     redirect($config['baseUrl'], 'loginForm&message=invalidParams');
+                   
+       
                     break;
 
                 case 'registerForm':
